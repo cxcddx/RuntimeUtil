@@ -18,6 +18,7 @@ import java.util.jar.Manifest;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private Button btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.btn:
 //                getPermission();
                 getPermissionByUtil();
@@ -46,13 +47,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private void getPermissionByUtil() {
         new getRuntimeUtil().getRequest(new String[]{
-            android.Manifest.permission.CALL_PHONE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE});
+                android.Manifest.permission.CALL_PHONE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE});
     }
 
     private void getPermission() {
 
-        requestRuntimePermission(new String[] {
-            android.Manifest.permission.CALL_PHONE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE},new PermissonListener() {
+        requestRuntimePermission(new String[]{
+                android.Manifest.permission.CALL_PHONE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE}, new PermissonListener() {
             @Override
             public void onGranted() {
                 Toast.makeText(MainActivity.this, "所有权限申请都通过了", Toast.LENGTH_LONG).show();
@@ -61,8 +62,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void onDenied(List<String> deniedPermissions) {
 
-                for (String permission: deniedPermissions) {
-                    Toast.makeText(MainActivity.this, permission+"权限被拒绝了,程序显示可能会不正常", Toast.LENGTH_SHORT).show();
+                for (String permission : deniedPermissions) {
+                    Toast.makeText(MainActivity.this, permission + "权限被拒绝了,程序显示可能会不正常", Toast.LENGTH_SHORT).show();
                 }
 
             }
